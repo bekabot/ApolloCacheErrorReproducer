@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), CoroutineScope {
         textViewFlow.setOnClickListener {
             textViewFlow.text = "Starting Request..."
 
-            GlobalScope.launch {
+            launch {
                 try {
                     val startTime = System.currentTimeMillis()
                     createApollo(applicationContext)
@@ -32,6 +32,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), CoroutineScope {
                             textViewFlow.text = "Request took $resultTime ms\nClick again to fetch data"
                         }
                 } catch (e: Exception) {
+                    e.printStackTrace()
                     textViewFlow.text = "Request error"
                 }
             }
